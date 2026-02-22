@@ -1,0 +1,10 @@
+Video 10: Create and Visualize a Robotic Arm with URDF
+URDF: Universial Robot Description Format, usually a xml file
+* Describes robot appearance
+* Enables software integration
+* Defines physical structure
+* Supports simulation capabilities
+
+The body of a robot consists of *links* and *joints* where,
+* Links: The rigit pieces of the robot, like bones.
+* Joints: Connect links, some can move, enabling motion between connected links.
