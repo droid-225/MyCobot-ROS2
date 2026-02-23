@@ -49,3 +49,24 @@ Copy the mesh files from the downloaded project into your project (Still in the 
 
 In the ros2_ws folder, to install the necessary dependencies from the package.xml:
   rosdep install -i --from-path src --rosdistro $ROS_DISTRO -y
+
+Then build the project.
+
+XACRO is like an architect drawin up plans and URDF is like the final ready to use documents.
+Both represent the robot, but XACRO is more flexible. In order to use a XACRO file by ROS 2, it needs
+to first be converted into a URDF file.
+
+Create new xacro files:
+  touch ~/ros2_ws/src/mycobot_ros2/mycobot_description/urdf/mech/{g_shape_base_v2_0.urdf.xacro,adaptive_gripper.urdf.xacro,mycobot_280_arm.urdf.xacro} ~/ros2_ws/src/mycobot_ros2/mycobot_description/urdf/robots/mycobot_280.urdf.xacro
+
+** BE VERY CAREFUL WITH SPACING IN COMMANDS
+
+To learn basics of XACRO:
+  https://docs.ros.org/en/foxy/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html
+
+For the XACRO files:
+* <mimic>: If the mimiced joint moves, the mimicing joint also moves, with a multiplier and offset for the movement.
+* <axis>: Defines which direction the joint rotates.
+* <limit>: Defines how far (lower and upper bound) a joint can move in radians and how fast (in radians/second).
+* <parent> / <child>: Shows the relationship of the joint to attached links.
+* <origin>: Where the joint is located relative to it's parent.
