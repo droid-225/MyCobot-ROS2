@@ -8,3 +8,44 @@ URDF: Universial Robot Description Format, usually a xml file
 The body of a robot consists of *links* and *joints* where,
 * Links: The rigit pieces of the robot, like bones.
 * Joints: Connect links, some can move, enabling motion between connected links.
+
+Within the src folder of the workspace, create the folder which will hold the URDF file.
+
+CD into this folder and create the meta package folder:
+  ros2 pkg create --build-type ament_cmake --license BSD-3-Clause <package name>
+
+Use the same command to make the robot description package (in the base package):
+  ros2 pkg create --build-type ament_cmake --license BSD-3-Clause <robot name>_description
+
+To check if the newly created packages are recognized by the ROS 2 system:
+  source ~/.bashrc
+It should do nothing.
+
+Make sure the main package and description package are listed in:
+  ros2 pkg list
+
+Make a folder to store the meshes in the description package:
+  mkdir -p ~/ros2_ws/src/mycobot_ros2/mycobot_description/meshes/mycobot_280/visual
+
+Make the folders for the urdf files of the different components:
+  mkdir -p ~/ros2_ws/src/mycobot_ros2/mycobot_description/urdf/control
+  mkdir -p ~/ros2_ws/src/mycobot_ros2/mycobot_description/urdf/mech
+  mkdir -p ~/ros2_ws/src/mycobot_ros2/mycobot_description/urdf/sensors
+  mkdir -p ~/ros2_ws/src/mycobot_ros2/mycobot_description/urdf/robots
+
+Mesh files are what make your robot look realisting in robotic simulation and visualization programs.
+Mesh files are usually in the .stl and .dae formats.
+
+To create custom mesh files, you can use CAD programs like onshape, fusion 360, solidworks, AutoCAD, etc. 
+and export them as mesh files in the above listed formats.
+You can use Blender to make the mesh file more lightweight and simplified.
+
+For this project we are using pre-made mesh files from Elephant Robotics.
+First CD into the downloads folder, then clone the git repo from Automatic Addison:
+  git clone -b jazzy https://github.com/automaticaddison/mycobot_ros2.git
+
+Copy the mesh files from the downloaded project into your project (Still in the downloads folder in terminal):
+  cp -r mycobot_ros2/mycobot_description/meshes/* ~/ros2_ws/mycobot_ros2/mycobot_description/meshes
+
+In the ros2_ws folder, to install the necessary dependencies from the package.xml:
+  rosdep install -i --from-path src --rosdistro $ROS_DISTRO -y

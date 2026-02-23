@@ -3,11 +3,14 @@
 <package format="3">
   <name>mycobot_description</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="aryanrishit1@gmail.com">rishit</maintainer>
+  <description>Contains the robot description files that define the physical aspects of a robot,
+    including it's geometry, kinematics, dynamics, and visual aspects.
+  </description>
+  <maintainer email="todo@todo.com">Rishit Shah</maintainer>
   <license>BSD-3-Clause</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>urdf_tutorial</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
