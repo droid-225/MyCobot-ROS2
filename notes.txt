@@ -70,3 +70,42 @@ For the XACRO files:
 * <limit>: Defines how far (lower and upper bound) a joint can move in radians and how fast (in radians/second).
 * <parent> / <child>: Shows the relationship of the joint to attached links.
 * <origin>: Where the joint is located relative to it's parent.
+
+<inerital> contains the location of the center of mass of a component, actual mass of compoent, and inertia vector values.
+
+The <box> size dimension is in meters.
+
+joint_effort: Maximum force the joint can exert.
+joint_velocity (radians/s): Maximum velocity the joint can move at.
+
+Flange: the connection between main arm component and end effector.
+
+In XACRO file this is the basic flow:
+1. Constant definition
+2. Helpful macro definitions / implementations
+3. Links
+4. Joints
+5. Gazebo visual properties
+
+* Fixed joint: No relative motion between links.
+* Revolute joint: Rotational motion between links.
+
+To convert the XACRO to URDF and visualize it in RIVZ:
+  ros2 launch urdf_tutorial display.launch.py model:=/home/<admin name>/ros2_ws/src/mycobot_ros2/mycobot_description/urdf/robots/mycobot_280.urdf.xacro
+* Here, replace <admin name> with the name of the user account currently being used for Ubuntu.
+
+To create a pdf map of the connections on the robot, cd into Documents and run:
+  ros2 run tf2_tools view_frames
+
+Then to see the pdf you can either open it directly or use the command:
+  evince <pdf name>
+* <pdf name>: Name of pdf containing the newly generated frame data.
+
+To create an alias to more quickly launch the robot visualization:
+  echo "alias elephant='ros2 launch urdf_tutorial display.launch.py model:=/home/<admin name>/ros2_ws/src/mycobot_ros2/mycobot_description/urdf/robots/mycobot_280.urdf.xacro'" >> ~/.bashrc
+
+To find all available aliases:
+  alias
+
+If newly made alias is not found, refresh the terminal or:
+  source ~/.bashrc
